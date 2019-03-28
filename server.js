@@ -1,12 +1,24 @@
-// Require the framework and instantiate it
-const fastify = require('fastify')({
-    logger: true
-  })
-  
+//copy and pasted from the documentation. 
+
+// // Require the framework and instantiate it
+// const fastify = require('fastify')({
+//     logger: true
+//   })
+
+  //imports
+  const fastify = require('fastify')();
   // Declare a route
-  fastify.get('/', function (request, reply) {
-    reply.send({ hello: 'world' })
-  })
+  fastify.register(require('./routes/users'), );
+  //listener
+  fastify.listen(3000, function (err, address) {
+    if (err) {
+      console.log(err);
+      process.exit(1);
+    } else {
+      console.log('Server is running, Brotato-chip');
+    }
+  });
+
   
   // Run the server!
   fastify.listen(3000, function (err, address) {
